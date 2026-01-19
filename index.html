@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dapur Nusantara - Warisan Resep Autentik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <div id="modalMeta" class="recipe-meta"></div>
+                <button onclick="window.print()" class="btn-print">🖨️ Cetak Resep</button>
+            </div>
+
+            <img id="modalImage" alt="Ilustrasi Masakan">
+            
+            <p id="modalDescription" class="recipe-desc"></p>
+
+            <div class="recipe-details-grid">
+                <div class="ingredients-box">
+                    <h4>🌿 Bahan-Bahan</h4>
+                    <ul id="modalIngredients"></ul>
+                </div>
+                <div class="steps-box">
+                    <h4>👨‍🍳 Cara Memasak</h4>
+                    <ol id="modalSteps"></ol></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <h1 class="logo">🍽️ Dapur <span>Nusantara</span></h1>
+        <nav>
+            <a href="#home">Beranda</a>
+            <a href="#recipes">Eksplorasi</a>
+            <a href="#about">Tentang</a>
+            <a href="#contact">Kontribusi</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h2>Warisan Rasa di Meja Anda</h2>
+            <p>Temukan koleksi resep autentik dari Sabang sampai Merauke yang telah diuji untuk keberhasilan memasak Anda.</p>
+            <button onclick="scrollToRecipes()">Mulai Memasak</button>
+        </div>
+    </section>
+
+    <section class="recipes" id="recipes">
+        <h2 class="section-title">🍲 Koleksi Resep Pilihan</h2>
+
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="🔍 Cari resep favoritmu...">
+            <select id="categoryFilter">
+                <option value="all">Semua Wilayah</option>
+                <option value="Sumatera">Sumatera</option>
+                <option value="Jawa">Jawa</option>
+                <option value="Bali">Bali</option>
+                <option value="Sulawesi">Sulawesi</option>
+                <option value="Kalimantan">Kalimantan</option>
+                <option value="Papua">Papua</option>
+            </select>
+        </div>
+
+        <div class="recipe-container" id="recipeContainer">
+            </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-card">
+            <h2 class="section-title">Mengenal Dapur Nusantara</h2>
+            <div class="about-text">
+                <p>
+                    <strong>Dapur Nusantara</strong> adalah rumah bagi para pencinta kuliner yang ingin menelusuri kembali akar rasa asli Indonesia. Kami percaya bahwa dapur adalah jantung dari setiap rumah, di mana setiap bumbu yang diulek dan setiap aroma yang tercium adalah penghormatan terhadap warisan leluhur yang tak ternilai.
+                </p>
+                <p>
+                    Kami hadir bukan sekadar untuk berbagi cara memasak. Misi utama kami adalah menyajikan resep teruji dengan standar presisi tinggi</strong>, memastikan setiap instruksi mudah dipahami bahkan bagi pemula sekalipun. 
+                </p>
+                <p>
+                    Dengan bahan-bahan segar yang mudah ditemukan di pasar lokal, kami mengajak Anda untuk menghidangkan mahakarya Nusantara dengan rasa yang jujur dan autentik, setiap hari.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-card">
+            <h2 class="section-title">Punya Resep Keluarga?</h2>
+            <p>Kami percaya bahwa resep terbaik lahir dari kehangatan dapur rumah. Bagikan warisan andalan keluarga Anda untuk kami kurasi dan abadikan dalam koleksi Nusantara.</p>
+            <form id="contactForm">
+                <div class="form-row">
+                    <input type="text" placeholder="Nama Lengkap" required>
+                    <input type="email" placeholder="Alamat Email" required>
+                </div>
+                <textarea rows="5" placeholder="Tuliskan nama masakan, bahan, dan cara membuatnya..." required></textarea>
+                <button type="submit" class="btn-submit">Kirim Resep</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 <strong>Dapur Nusantara</strong> - Melestarikan Cita Rasa Indonesia</p>
+        <small>Resep Tradisional | Takaran Presisi | Rasa Autentik</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

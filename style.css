@@ -1,0 +1,126 @@
+/* --- RESET & BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background: #fcfcfc; color: #333; line-height: 1.6; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+
+/* --- HEADER --- */
+.header {
+    background: white; padding: 15px 8%; display: flex; justify-content: space-between;
+    align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
+}
+.logo { font-size: 1.5rem; font-weight: bold; }
+.logo span { color: #e67e22; }
+nav a { margin-left: 20px; font-weight: 500; transition: 0.3s; }
+nav a:hover { color: #e67e22; }
+
+/* --- HERO --- */
+.hero {
+    height: 60vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1500') center/cover;
+    display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 20px;
+}
+.hero h2 { font-size: 3rem; margin-bottom: 15px; }
+.hero button {
+    padding: 12px 35px; background: #e67e22; border: none; color: white; 
+    border-radius: 50px; cursor: pointer; font-size: 1rem; transition: 0.3s;
+}
+.hero button:hover { background: #d35400; transform: scale(1.05); }
+
+/* --- RECIPES & FILTER --- */
+.recipes { padding: 60px 8%; text-align: center; }
+.section-title { margin-bottom: 30px; font-size: 2rem; }
+.filter-bar {
+    max-width: 800px; margin: -40px auto 40px; background: white; padding: 15px;
+    border-radius: 12px; display: flex; gap: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.filter-bar input { flex: 2; padding: 12px; border: 1px solid #eee; border-radius: 8px; outline: none; }
+.filter-bar select { flex: 1; padding: 12px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; }
+
+.recipe-container {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;
+}
+.recipe-card {
+    background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    cursor: pointer; transition: 0.3s; border: 1px solid #f1f1f1; text-align: left;
+}
+.recipe-card:hover { transform: translateY(-10px); }
+.recipe-card img { width: 100%; height: 200px; object-fit: cover; }
+.recipe-card .content { padding: 15px; }
+
+/* --- MODAL --- */
+.modal {
+    display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); overflow-y: auto;
+}
+.modal-content {
+    background: white; margin: 5% auto; padding: 35px; width: 90%; max-width: 850px;
+    border-radius: 20px; position: relative; animation: fadeIn 0.3s;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.close { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: #999; }
+#modalImage { width: 100%; height: 350px; object-fit: cover; border-radius: 15px; margin: 20px 0; }
+.recipe-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px; text-align: left; }
+.ingredients-box, .steps-box { background: #fdfdfd; padding: 20px; border-radius: 12px; border: 1px solid #eee; }
+
+/* --- ABOUT & CONTACT --- */
+.about, .contact { padding: 60px 8%; background: #f9f9f9; text-align: center; }
+.about-card, .contact-card { background: white; padding: 40px; border-radius: 20px; max-width: 900px; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.form-row { display: flex; gap: 15px; margin-bottom: 15px; }
+input, textarea { width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px; outline: none; }
+.btn-submit { background: #2c3e50; color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; }
+
+/* --- FOOTER --- */
+footer { background: #2c3e50; color: white; padding: 40px; text-align: center; }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .recipe-details-grid { grid-template-columns: 1fr; }
+    .form-row { flex-direction: column; }
+    .hero h2 { font-size: 2rem; }
+    .modal-content { width: 95%; padding: 20px; margin: 10% auto; }
+}
+
+/* --- PRINT RULES (Diletakkan terpisah di paling bawah) --- */
+
+@media print {
+    /* Sembunyikan semua elemen kecuali modal */
+    header, .hero, .filter-bar, .recipes, .about, .contact, footer, .close, .btn-print {
+        display: none !important;
+    }
+
+    /* Paksa Modal tampil di posisi paling atas kertas */
+    .modal {
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: white !important;
+        overflow: visible !important;
+    }
+
+    /* Tampilkan teks dengan warna hitam agar terbaca printer */
+    #modalTitle, #modalDescription, #modalIngredients li, #modalSteps li {
+        color: black !important;
+        visibility: visible !important;
+    }
+
+    /* --- INI BAGIAN NOMOR OTOMATIS --- */
+    #modalSteps {
+        display: block !important;
+        list-style-type: decimal !important; /* Munculkan angka 1, 2, 3 */
+        margin-left: 40px !important;       /* Jarak cukup agar angka tidak terpotong */
+        padding: 0 !important;
+    }
+
+    #modalSteps li {
+        display: list-item !important;      /* Wajib agar nomor muncul */
+        margin-bottom: 10px !important;
+        list-style-position: outside !important;
+    }
+
+    /* Susun agar Bahan di atas, Cara Masak di bawah */
+    .recipe-details-grid {
+        display: block !important;
+    }
+}
